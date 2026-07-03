@@ -11,7 +11,7 @@ public class UtenteService {
 
     private UtenteRepository utenteRepository;
 
-    public UtenteService(UtenteService utenteService){
+    public UtenteService(UtenteRepository utenteRepository){
         this.utenteRepository = utenteRepository;
     }
 

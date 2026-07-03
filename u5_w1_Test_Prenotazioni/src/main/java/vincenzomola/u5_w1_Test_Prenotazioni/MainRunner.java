@@ -35,8 +35,16 @@ public class MainRunner implements CommandLineRunner {
     private Postazione postazione2;
     private Postazione postazione3;
 
-    public MainRunner(EdificioService edificioService, Edificio hotelRamada, Edificio ufficioBNL, Edificio terrazzaSunshine, Utente aldo, Utente luca, Utente antonio, Postazione postazione1, Postazione postazione2, Postazione postazione3){
+    private Prenotazione prenotazione1;
+    private Prenotazione prenotazione2;
+    private Prenotazione prenotazione3;
+
+    public MainRunner(EdificioService edificioService, UtenteService utenteService, PostazioneService postazioneService, PrenotazioneService prenotazioneService, Edificio hotelRamada, Edificio ufficioBNL, Edificio terrazzaSunshine, Utente aldo, Utente luca, Utente antonio, Postazione postazione1, Postazione postazione2, Postazione postazione3, Prenotazione prenotazione1, Prenotazione prenotazione2, Prenotazione prenotazione3){
         this.edificioService = edificioService;
+        this.utenteService = utenteService;
+        this.postazioneService = postazioneService;
+        this.prenotazioneService = prenotazioneService;
+
         this.hotelRamada = hotelRamada;
         this.ufficioBNL = ufficioBNL;
         this.terrazzaSunshine = terrazzaSunshine;
@@ -46,6 +54,9 @@ public class MainRunner implements CommandLineRunner {
         this.postazione1 = postazione1;
         this.postazione2 = postazione2;
         this.postazione3 = postazione3;
+        this.prenotazione1 = prenotazione1;
+        this.prenotazione2 = prenotazione2;
+        this.prenotazione3 = prenotazione3;
     }
 
     @Override
@@ -64,6 +75,9 @@ postazioneService.savePostazione(postazione1);
 postazioneService.savePostazione(postazione2);
 postazioneService.savePostazione(postazione3);
 
+prenotazioneService.savePrenotazione(prenotazione1);
+            prenotazioneService.savePrenotazione(prenotazione1);
+            prenotazioneService.savePrenotazione(prenotazione1);
 
         } catch(NotFoundException e){
             System.out.println("Salvataggio non riuscito!" + e.getMessage());
