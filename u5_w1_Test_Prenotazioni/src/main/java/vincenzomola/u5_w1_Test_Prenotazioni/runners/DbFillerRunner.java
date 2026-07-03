@@ -1,7 +1,5 @@
-package vincenzomola.u5_w1_Test_Prenotazioni;
+package vincenzomola.u5_w1_Test_Prenotazioni.runners;
 
-import jakarta.annotation.Nullable;
-import org.springframework.boot.ApplicationContextFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 import vincenzomola.u5_w1_Test_Prenotazioni.entities.Edificio;
@@ -10,7 +8,6 @@ import vincenzomola.u5_w1_Test_Prenotazioni.entities.Prenotazione;
 import vincenzomola.u5_w1_Test_Prenotazioni.entities.Utente;
 import vincenzomola.u5_w1_Test_Prenotazioni.enums.TipoPostazione;
 import vincenzomola.u5_w1_Test_Prenotazioni.exceptions.NotFoundException;
-import vincenzomola.u5_w1_Test_Prenotazioni.repositories.EdificioRepository;
 import vincenzomola.u5_w1_Test_Prenotazioni.services.EdificioService;
 import vincenzomola.u5_w1_Test_Prenotazioni.services.PostazioneService;
 import vincenzomola.u5_w1_Test_Prenotazioni.services.PrenotazioneService;
@@ -19,7 +16,7 @@ import vincenzomola.u5_w1_Test_Prenotazioni.services.UtenteService;
 import java.time.LocalDate;
 
 @Component
-public class MainRunner implements CommandLineRunner {
+public class DbFillerRunner implements CommandLineRunner {
 
     private EdificioService edificioService;
     private UtenteService utenteService;
@@ -34,17 +31,10 @@ public class MainRunner implements CommandLineRunner {
     private Utente luca;
     private Utente antonio;
 
-    private Postazione postazione1;
-    private Postazione postazione2;
-    private Postazione postazione3;
-
-    private Prenotazione prenotazione1;
-    private Prenotazione prenotazione2;
-    private Prenotazione prenotazione3;
-
-    public MainRunner(EdificioService edificioService, UtenteService utenteService, PostazioneService postazioneService,
-                      PrenotazioneService prenotazioneService, Edificio hotelRamada, Edificio ufficioBNL,
-                      Edificio terrazzaSunshine, Utente aldo, Utente luca, Utente antonio) {
+    public DbFillerRunner(EdificioService edificioService, UtenteService utenteService,
+                          PostazioneService postazioneService,
+                          PrenotazioneService prenotazioneService, Edificio hotelRamada, Edificio ufficioBNL,
+                          Edificio terrazzaSunshine, Utente aldo, Utente luca, Utente antonio) {
         this.edificioService = edificioService;
         this.utenteService = utenteService;
         this.postazioneService = postazioneService;
@@ -70,7 +60,7 @@ public class MainRunner implements CommandLineRunner {
 //            utenteService.saveUtente(luca);
 //            utenteService.saveUtente(antonio);
 //
-
+//
 //            Utente aldoFromDb = utenteService.findUtenteById(1);
 //            Utente lucaFromDb = utenteService.findUtenteById(2);
 //            Utente antonioFromDb = utenteService.findUtenteById(3);
@@ -82,26 +72,38 @@ public class MainRunner implements CommandLineRunner {
 //            Postazione postazione1 = new Postazione("Festa aziendale", TipoPostazione.OPEN_SPACE, 100,
 //                    hotelRamadaFromDb);
 //            Postazione postazione2 = new Postazione("Meeting lavorativo", TipoPostazione.PRIVATO, 7,
-//            ufficioBNLFromDb);
+//                    ufficioBNLFromDb);
 //            Postazione postazione3 = new Postazione("Premiazione di fine anno", TipoPostazione.SALA_RIUNIONI, 500,
 //                    terrazzaSunshineFromDb);
-
+//
 //            postazioneService.savePostazione(postazione1);
 //            postazioneService.savePostazione(postazione2);
 //            postazioneService.savePostazione(postazione3);
-
-//            postazioneService.findPostazioneById(1);
-//            postazioneService.findPostazioneById(2);
-//            postazioneService.findPostazioneById(3);
-
-//            Prenotazione prenotazione1 = new Prenotazione(LocalDate.of(2026, 7, 21), aldoFromDb, postazione1);
-//            Prenotazione prenotazione2 = new Prenotazione(LocalDate.of(2026, 8, 21), lucaFromDb, postazione2);
-//            Prenotazione prenotazione3 = new Prenotazione(LocalDate.of(2026, 8, 19), antonioFromDb, postazione3);
-
+//
+//            Postazione postazione1FromDb = postazioneService.findPostazioneById(1);
+//            Postazione postazione2FromDb = postazioneService.findPostazioneById(2);
+//            Postazione postazione3FromDb = postazioneService.findPostazioneById(3);
+//
+//            Prenotazione prenotazione1 = new Prenotazione(LocalDate.of(2026, 7, 21), aldoFromDb, postazione1FromDb);
+//            Prenotazione prenotazione2 = new Prenotazione(LocalDate.of(2026, 8, 21), lucaFromDb, postazione2FromDb);
+//            Prenotazione prenotazione3 = new Prenotazione(LocalDate.of(2026, 8, 19), antonioFromDb,
+//                    postazione3FromDb);
+//
 //            prenotazioneService.savePrenotazione(prenotazione1);
 //            prenotazioneService.savePrenotazione(prenotazione2);
 //            prenotazioneService.savePrenotazione(prenotazione3);
-            
+//
+//            Prenotazione prenotazione4 = new Prenotazione(LocalDate.of(2026, 9, 21), aldoFromDb, postazione1FromDb);
+//            Prenotazione prenotazione5 = new Prenotazione(LocalDate.of(2026, 10, 21), lucaFromDb, postazione2FromDb);
+//            Prenotazione prenotazione6 = new Prenotazione(LocalDate.of(2026, 11, 21), antonioFromDb,
+//            postazione3FromDb);
+//
+//            prenotazioneService.savePrenotazione(prenotazione4);
+//            prenotazioneService.savePrenotazione(prenotazione5);
+//            prenotazioneService.savePrenotazione(prenotazione6);
+
+            System.out.println(postazioneService.filterPostazioniByTipoECitta(TipoPostazione.PRIVATO,
+                    "milano"));
 
         } catch (NotFoundException e) {
             System.out.println("Salvataggio non riuscito!" + e.getMessage());

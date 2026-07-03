@@ -5,25 +5,33 @@ import jakarta.persistence.*;
 @Entity
 @Table(name = "Edifici")
 public class Edificio {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id_Edificio")
+    @Column(name = "id_Edificio")
     private long id;
     private String nome;
     private String indirizzo;
-    private String città;
+    private String citta;
 
-    protected Edificio(){}
+    protected Edificio() {
+    }
 
-    public Edificio(String nome, String indirizzo, String città){
+    public Edificio(String nome, String indirizzo, String citta) {
         this.nome = nome;
         this.indirizzo = indirizzo;
-        this.città = città;
+        this.citta = citta;
     }
 
     public String getNome() {
         return nome;
+    }
+
+    public String getCitta() {
+        return citta;
+    }
+
+    public String getIndirizzo() {
+        return indirizzo;
     }
 
     @Override
@@ -32,7 +40,7 @@ public class Edificio {
                 "id=" + id +
                 ", nome='" + nome + '\'' +
                 ", indirizzo='" + indirizzo + '\'' +
-                ", città='" + città + '\'' +
+                ", citta='" + citta + '\'' +
                 '}';
     }
 }

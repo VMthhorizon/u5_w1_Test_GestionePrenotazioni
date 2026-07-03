@@ -3,6 +3,7 @@ package vincenzomola.u5_w1_Test_Prenotazioni.services;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 import vincenzomola.u5_w1_Test_Prenotazioni.entities.Prenotazione;
+import vincenzomola.u5_w1_Test_Prenotazioni.exceptions.AlreadyBooked;
 import vincenzomola.u5_w1_Test_Prenotazioni.repositories.PrenotazioneRepository;
 
 @Service
@@ -16,6 +17,13 @@ public class PrenotazioneService {
 
     @Transactional
     public void savePrenotazione(Prenotazione prenotazione) {
+
+        boolean postazionePrenotata = prenotazioneRepository.existsByPostazioneAndDataPrenotazione(
+                prenotazione.getPostazione(), prenotazione.getDataPrenotazione());
+
+        if (postazionePrenotata)
+            throw new AlreadyBooked("Postazione già occupata per il " + prenotazione.getDataPrenotazione());
+
         prenotazioneRepository.save(prenotazione);
         System.out.println("Prenotazione salvata");
     }

@@ -14,22 +14,27 @@ public class Postazione {
 
     private String descrizione;
     @Enumerated(EnumType.STRING)
-    @Column(name ="tipo_Postazione")
+    @Column(name = "tipo_Postazione")
     private TipoPostazione tipoPostazione;
     @Column(name = "max_Occupanti")
     private long maxOccupanti;
 
     @ManyToOne
-    @JoinColumn(name="id_edificio", nullable = false)
+    @JoinColumn(name = "id_edificio", nullable = false)
     private Edificio edificio;
 
-    protected Postazione(){}
+    protected Postazione() {
+    }
 
-    public Postazione(String descrizione, TipoPostazione tipoPostazione, long maxOccupanti, Edificio edificio){
+    public Postazione(String descrizione, TipoPostazione tipoPostazione, long maxOccupanti, Edificio edificio) {
         this.descrizione = descrizione;
         this.tipoPostazione = tipoPostazione;
         this.maxOccupanti = maxOccupanti;
         this.edificio = edificio;
+    }
+
+    public TipoPostazione getTipoPostazione() {
+        return tipoPostazione;
     }
 
     @Override

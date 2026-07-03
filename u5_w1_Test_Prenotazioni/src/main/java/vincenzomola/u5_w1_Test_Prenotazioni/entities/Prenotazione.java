@@ -23,12 +23,25 @@ public class Prenotazione {
     @JoinColumn(name = "id_postazione")
     private Postazione postazione;
 
-    protected Prenotazione(){}
+    protected Prenotazione() {
+    }
 
-    public Prenotazione(LocalDate dataPrenotazione, Utente utente, Postazione postazione){
+    public Prenotazione(LocalDate dataPrenotazione, Utente utente, Postazione postazione) {
         this.dataPrenotazione = dataPrenotazione;
         this.utente = utente;
         this.postazione = postazione;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public LocalDate getDataPrenotazione() {
+        return dataPrenotazione;
+    }
+
+    public Postazione getPostazione() {
+        return postazione;
     }
 
     @Override
