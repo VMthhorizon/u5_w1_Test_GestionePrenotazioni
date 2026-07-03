@@ -7,18 +7,19 @@ import org.springframework.stereotype.Component;
 import vincenzomola.u5_w1_Test_Prenotazioni.entities.Edificio;
 import vincenzomola.u5_w1_Test_Prenotazioni.exceptions.NotFoundException;
 import vincenzomola.u5_w1_Test_Prenotazioni.repositories.EdificioRepository;
+import vincenzomola.u5_w1_Test_Prenotazioni.services.EdificioService;
 
 @Component
 public class MainRunner implements CommandLineRunner {
 
-    private EdificioRepository edificioRepository;
+    private EdificioService edificioService;
 
     private Edificio hotelRamada;
     private Edificio ufficioBNL;
     private Edificio terrazzaSunshine;
 
-    public MainRunner(EdificioRepository edificioRepository, Edificio hotelRamada, Edificio ufficioBNL, Edificio terrazzaSunshine){
-        this.edificioRepository = edificioRepository;
+    public MainRunner(EdificioService edificioService, Edificio hotelRamada, Edificio ufficioBNL, Edificio terrazzaSunshine){
+        this.edificioService = edificioService;
         this.hotelRamada = hotelRamada;
         this.ufficioBNL = ufficioBNL;
         this.terrazzaSunshine = terrazzaSunshine;
@@ -28,9 +29,9 @@ public class MainRunner implements CommandLineRunner {
     public void run(String... args) throws Exception {
 
         try {
-            edificioRepository.save(hotelRamada);
-            edificioRepository.save(ufficioBNL);
-            edificioRepository.save(terrazzaSunshine);
+            edificioService.saveEdificio(hotelRamada);
+            edificioService.saveEdificio(ufficioBNL);
+            edificioService.saveEdificio(terrazzaSunshine);
         } catch(NotFoundException e){
             System.out.println("Edificio non salvato!" + e.getMessage());
         }
