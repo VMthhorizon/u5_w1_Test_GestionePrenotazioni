@@ -10,7 +10,6 @@ public class U5W1TestPrenotazioniApplication {
 
 		SpringApplication.run(U5W1TestPrenotazioniApplication.class, args);
 
-		System.out.println("COMPLETATO");
 	}
 
 }

@@ -22,6 +22,10 @@ public class Edificio {
         this.città = città;
     }
 
+    public String getNome() {
+        return nome;
+    }
+
     @Override
     public String toString() {
         return "Edificio{" +
