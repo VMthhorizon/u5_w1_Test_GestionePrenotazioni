@@ -2,6 +2,7 @@ package vincenzomola.u5_w1_Test_Prenotazioni.services;
 
 import org.springframework.stereotype.Service;
 import vincenzomola.u5_w1_Test_Prenotazioni.entities.Edificio;
+import vincenzomola.u5_w1_Test_Prenotazioni.entities.Utente;
 import vincenzomola.u5_w1_Test_Prenotazioni.repositories.EdificioRepository;
 import vincenzomola.u5_w1_Test_Prenotazioni.repositories.UtenteRepository;
 
@@ -14,8 +15,8 @@ public class UtenteService {
         this.utenteRepository = utenteRepository;
     }
 
-    public void saveEdificio(Edificio edificio){
-        utenteRepository.save(edificio);
-        System.out.println("L'edificio " + edificio.getNome() + " é stato salvato");
+    public void saveUtente(Utente utente){
+        utenteRepository.save(utente);
+        System.out.println("L'Utente " + utente.getNomeCompleto() + " é stato salvato");
     }
 }

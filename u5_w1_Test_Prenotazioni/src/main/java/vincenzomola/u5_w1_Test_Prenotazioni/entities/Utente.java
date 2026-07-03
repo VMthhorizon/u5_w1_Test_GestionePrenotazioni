@@ -21,6 +21,10 @@ public class Utente {
         this.email = email;
     }
 
+    public String getNomeCompleto() {
+        return nomeCompleto;
+    }
+
     @Override
     public String toString() {
         return "Utente{" +
